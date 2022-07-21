@@ -6,6 +6,10 @@ import java.io.IOException;
 public class ReportGenerationExample {
 
     public static void main(String[] args) throws IOException {
-        HtmlConverter.convertToPdf(new File("reports/tax-receipt.html"),new File("demo-html.pdf"));
+        //final String filePath = "";
+        final String filePath = "/home/daypay/workspace/intellij/mp-report-poc/reports/tax-recipt.html";
+        HtmlConverter.convertToPdf(
+                new File(filePath),
+                new File("demo-html.pdf"));
     }
 }

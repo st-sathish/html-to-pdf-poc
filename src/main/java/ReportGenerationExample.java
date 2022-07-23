@@ -15,16 +15,19 @@ public class ReportGenerationExample {
     public static void main(String[] args) throws IOException {
         //final String filePath = "";
         final String filePath = "/home/daypay/workspace/intellij/mp-report-poc/reports/tax-recipt.html";
-        HtmlConverter.convertToPdf(
-                new File(filePath),
-                new File("demo-html.pdf"));
+//        HtmlConverter.convertToPdf(
+//                new File(filePath),
+//                new File("demo-html.pdf"));
         final Map<String, Object> data = new HashMap<>();
         data.put("cardNumber", "123455");
         data.put("cvv", "123455");
         data.put("month", "123455");
         data.put("year", "123455");
         Context context = new Context();
-        context.setVariables(data);
+        context.setVariable("cardNumber", "123455");
+        context.setVariable("cvv", "123455");
+        context.setVariable("month", "123455");
+        context.setVariable("year", "123455");
         SpringTemplateEngine templateEngine = new SpringTemplateEngine();
         String htmlContent = templateEngine.process(filePath, context);
         ByteArrayOutputStream target = new ByteArrayOutputStream();

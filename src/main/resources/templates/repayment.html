@@ -1,0 +1,241 @@
+<!--#
+# Licensed to the Apache Software Foundation (ASF) under one
+# or more contributor license agreements. See the NOTICE file
+# distributed with this work for additional information
+# regarding copyright ownership. The ASF licenses this file
+# to you under the Apache License, Version 2.0 (the
+# "License"); you may not use this file except in compliance
+# with the License. You may obtain a copy of the License at
+#
+# http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing,
+# software distributed under the License is distributed on an
+# "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+# KIND, either express or implied. See the License for the
+# specific language governing permissions and limitations
+# under the License.
+#-->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        html, body {
+            height: 100%;
+        }
+        .container {
+            overflow:scroll;
+            height: 100%;
+            width: 100%;
+            padding: 30px;
+        }
+        table, th, td {
+             border: 1px solid black;
+            border-collapse: collapse;
+            padding: 5px;
+            /* width: 100%; */
+        }
+        .clr{
+            background-color:rgb(219, 219, 219);
+        }
+        .footer{
+            text-align: center;
+        }
+        .row:after {
+          content: "";
+          display: table;
+          clear: both;
+        }
+        .column {
+          float: left;
+          width: 33.33%;
+          position: relative;
+          padding: 10px;
+          height:100%;
+          border-left: 1px solid black;
+        }
+        .text-container {
+            text-align:center;
+        }
+        .heading {
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .sub-heading {
+            font-size: 20px;
+        }
+        .single-row-heading {
+            height: 100px;
+            background-color: rgb(219, 219, 219);
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .full-border {
+            border: 1px solid black
+        }
+        .text-value {
+            border-bottom: 2px dashed #000;
+            text-decoration: none;
+        }
+        .form-field-label {
+            height: 80px;
+            padding-top: 32px;
+            padding-left: 20px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="row full-border" style="height:100px">
+        <div class="column">
+            <div class="text-container"><label class="heading">Организация</label></div>
+            <div class="text-container"><label class="sub-heading">„Мъни Плюс Мениджмънт“ АД</label></div>
+        </div>
+        <div class="column">
+            <div class="text-container"><label class="heading">Булстат</label></div>
+            <div class="text-container"><label class="sub-heading">206613478</label></div>
+        </div>
+        <div class="column">
+            <div class="text-container"><img th:src="@{mp_logo.png}" style="width: 150px"></div>
+            <div class="text-container"><label class="sub-heading">Дата</label><span th:text="${todayDate}"></span></div>
+        </div>
+    </div>
+    <div class="heading single-row-heading full-border">
+        <label style="margin-right:20px">ПРИХОДЕН КАСОВ ОРДЕР № ...............</label><span class="text-value" th:text="${clientDisplayName}"></span>
+    </div>
+    <div class="form-field-label full-border">
+        <label style="margin-right:20px">Да се приеме от (трите имена)</label><span class="text-value" th:text="${clientDisplayName}"></span>
+    </div>
+    <div class="form-field-label full-border">
+        <label style="margin-right:20px">ЕГН:</label><span class="text-value" th:text="${clientDisplayName}"></span>
+    </div>
+    <div class="form-field-label full-border">
+        <label style="margin-right:20px">Основание: .....................................................................</label><span class="text-value" th:text="${clientAddress}"></span>
+    </div>
+    <div class="form-field-label full-border">
+        <label style="margin-right:20px">Вноска по кредит № ................................ </label><span class="text-value" th:text="${clientDisplayName}"></span>
+    </div>
+    <div class="row full-border" style="height:100px">
+        <div class="column">
+            <div class="text-container"><label class="heading">Сумата</label></div>
+        </div>
+    </div>
+    <div class="form-field-label full-border">
+        <label style="margin-right:20px">Цифром: <span class="text-value" th:text="${clientPin}"></span></label><label style="...">лв.</label>
+    </div>
+    <div class="form-field-label full-border">
+        <label style="margin-right:20px">Словом:</label><span class="text-value" th:text="${companyName}"></span>
+    </div>
+    <div class="form-field-label full-border">
+        <div class="text-container"><label class = "heading"style="margin-right:20px">Платена главница:</label><span class="text-value" th:text="${attorneyNumber} + '/' +${attorneyDate}"></span></div>
+        <div class="text-container"><label class="sub-heading">Платена РЛ:</label><span class="text-value" th:text="${attorneyNumber} + '/' +${attorneyDate}"></span></div>
+    </div>
+    <div class="row full-border" style="height:100px">
+        <div class="column">
+            <div class="text-container"><label class="heading">Касиер:</label></div>
+        </div>
+        <div class="column">
+            <div class="text-container"><label class="heading">Вносител:</label></div>
+        </div>
+        <div class="column">
+            <div class="text-container"><label class="heading">Счетоводител:</label></div>
+        </div>
+    </div>
+    <div class="row full-border" style="height:100px">
+        <div class="column">
+            <div class="text-container"><label class="heading text-value"></label></div>
+            <div class="text-container"><label class="sub-heading">/Подпис/</label></div>
+        </div>
+        <div class="column">
+            <div class="text-container"><label class="heading text-value"></label></div>
+            <div class="text-container"><label class="sub-heading">/Подпис/</label></div>
+        </div>
+        <div class="column">
+            <div class="text-container"><label class="heading text-value"></label></div>
+            <div class="text-container"><label class="sub-heading">/Подпис/</label></div>
+        </div>
+    </div>
+</div>
+</body>
+
+<body>
+<div class="container">
+    <div class="row full-border" style="height:100px">
+        <div class="column">
+            <div class="text-container"><label class="heading">Организация</label></div>
+            <div class="text-container"><label class="sub-heading">„Мъни Плюс Мениджмънт“ АД</label></div>
+        </div>
+        <div class="column">
+            <div class="text-container"><img th:src="@{mp_logo.png}" style="width: 150px"></div>
+            <div class="text-container"><label class="sub-heading">Дата:</label><span th:text="${todayDate}"></span></div>
+        </div>
+    </div>
+    <div class="heading single-row-heading full-border">
+        <label style="margin-right:20px">КВИТАНЦИЯ</label><span class="text-value" th:text="${clientDisplayName}"></span>
+    </div>
+    <div class="form-field-label full-border">
+        <label style="margin-right:20px">Квитанция към приходен касов ордер №</label><span class="text-value" th:text="${clientDisplayName}"></span>
+    </div>
+    <div class="form-field-label full-border">
+        <label style="margin-right:20px">Внесена сума от</label><span class="text-value" th:text="${clientDisplayName}"></span>
+    </div>
+    <div class="form-field-label full-border">
+        <label style="margin-right:20px">За/срещу (основание)</label><span class="text-value" th:text="${clientAddress}"></span>
+    </div>
+    <div class="form-field-label full-border">
+        <label style="margin-right:20px">Вноска по кредит № </label><span class="text-value" th:text="${clientDisplayName}"></span>
+    </div>
+    <div class="form-field-label full-border">
+        <div class="text-container"><label class = "heading"style="margin-right:20px">Платена главница:</label><span class="text-value" th:text="${attorneyNumber} + '/' +${attorneyDate}"></span></div>
+        <div class="text-container"><label class="sub-heading">Платена РЛ:</label><span class="text-value" th:text="${attorneyNumber} + '/' +${attorneyDate}"></span></div>
+    </div>
+    <div class="row full-border" style="height:100px">
+        <div class="column">
+            <div class="text-container"><label class="heading">Сумата</label></div>
+        </div>
+    </div>
+    <div class="form-field-label full-border">
+        <label style="margin-right:20px">Цифром: <span class="text-value" th:text="${clientPin}"></span></label><label style="...">лв.</label>
+    </div>
+    <div class="form-field-label full-border">
+        <label style="margin-right:20px">Словом:</label><span class="text-value" th:text="${companyName}"></span>
+    </div>
+    <div class="row full-border" style="height:100px">
+        <div class="column">
+            <div class="text-container"><label class="heading">Касиер:</label></div>
+        </div>
+        <div class="column">
+            <div class="text-container"><label class="heading">Вносител:</label></div>
+        </div>
+        <div class="column">
+            <div class="text-container"><label class="heading">Счетоводител:</label></div>
+        </div>
+    </div>
+    <div class="row full-border" style="height:100px">
+        <div class="column">
+            <div class="text-container"><label class="heading text-value"></label></div>
+            <div class="text-container"><label class="sub-heading">/Подпис/</label></div>
+        </div>
+        <div class="column">
+            <div class="text-container"><label class="heading text-value"></label></div>
+            <div class="text-container"><label class="sub-heading">/Подпис/</label></div>
+        </div>
+        <div class="column">
+            <div class="text-container"><label class="heading text-value"></label></div>
+            <div class="text-container"><label class="sub-heading">/Подпис/</label></div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

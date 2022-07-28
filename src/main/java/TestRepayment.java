@@ -49,9 +49,11 @@ public class TestRepayment {
         /* extract output as bytes */
         byte[] bytes = target.toByteArray();
         FileUtils.writeByteArrayToFile(new File("repayment.pdf"), bytes);
-//        final String filePath = "/home/daypay/workspace/intellij/mp-report-poc/reports/disbursal.html";
-//                HtmlConverter.convertToPdf(
-//                new File(filePath),
-//                new File("test.pdf"));
+        final String filePath = "/home/linux/workspace/fineract/html-to-pdf-poc/src/main/resources/templates/repayment.html";
+        //final String filePath = "/home/linux/workspace/fineract/html-to-pdf-poc/src/main/resources/templates/disbursal.html";
+        //final String filePath = "/home/daypay/workspace/intellij/mp-report-poc/reports/disbursal.html";
+                HtmlConverter.convertToPdf(
+                new File(filePath),
+                new File("repayment.pdf"));
     }
 }

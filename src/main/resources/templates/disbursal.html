@@ -31,10 +31,8 @@
             height: 100%;
         }
         .container {
-            overflow:scroll;
             height: 100%;
             width: 100%;
-            padding: 30px;
         }
         table, th, td {
              border: 1px solid black;
@@ -87,32 +85,67 @@
             text-decoration: none;
         }
         .form-field-label {
-            height: 80px;
+            height: auto;
             padding-top: 32px;
             padding-left: 20px;
             font-size: 20px;
             font-weight: bold;
+            height: auto;
+            min-height: 80px;
+            padding-bottom: 20px;
+        }
+
+        .column {
+          float: left;
+          width: 33.33%;
+          position: relative;
+          padding: 10px;
+          height:100%;
+          border-left: 1px solid black;
+        }
+        .column1 {
+                  float: left;
+                  width: 25%;
+                  position: relative;
+                  padding: 10px;
+                  height:100%;
+                  border-left: 1px solid black;
+                }
+       .column2 {
+          float: left;
+          width: 50%;
+          position: relative;
+          padding: 10px;
+          height:100%;
+        }
+        .column3 {
+          float: left;
+          width: 33.33%;
+          position: relative;
+          padding: 10px;
+          height:100%;
         }
     </style>
 </head>
 <body>
 <div class="container">
     <div class="row full-border" style="height:100px">
-        <div class="column">
+        <div class="column2">
             <div class="text-container"><label class="heading">Организация</label></div>
             <div class="text-container"><label class="sub-heading">„Мъни Плюс Мениджмънт“ АД</label></div>
         </div>
-        <div class="column">
+        <div class="column1">
             <div class="text-container"><label class="heading">Булстат</label></div>
             <div class="text-container"><label class="sub-heading">206613478</label></div>
         </div>
-        <div class="column">
-            <div class="text-container"><img th:src="@{mp_logo.png}" style="width: 150px"></div>
-            <div class="text-container"><label class="sub-heading">Дата</label><span th:text="${todayDate}"></span></div>
+        <div class="column1">
+            <div class="text-container"><img th:src="@{src/main/resource/templates/mp_logo.png}" style="width: 150px"></div>
+            <div class="text-container"><label class="sub-heading">Дата:</label>&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;<span th:text="${todayDate}"></span></div>
         </div>
     </div>
     <div class="heading single-row-heading full-border">
-        <label style="margin-right:20px">РАЗХОДЕН КАСОВ ОРДЕР №</label><span class="text-value" th:text="${clientDisplayName}"></span>
+        <label style="margin-right:20px">РАЗХОДЕН КАСОВ ОРДЕР №</label><span class="text-value" th:text="${accountNumber} + '-' + ${transactionId}"></span>
     </div>
     <div class="form-field-label full-border">
         <label style="margin-right:20px">Да се приеме от (трите имена)</label><span class="text-value" th:text="${clientDisplayName}"></span>
@@ -124,40 +157,46 @@
         <label style="margin-right:20px">Адрес:</label><span class="text-value" th:text="${clientAddress}"></span>
     </div>
     <div class="form-field-label full-border">
-        <label style="margin-right:20px">Лична карта (паспорт), </label><span class="text-value" th:text="${clientDisplayName}"></span>
+        <label style="margin-right:20px">Лична карта (паспорт), издадена на, </label>
+        <span class="text-value" th:text="${clientIdentificationNumber} + '/' + ${clientDocumentIssueDate}"></span>
+        <label>от МВР</label>
+        <span class="text-value" th:text="${clientAuthority}"></span>
     </div>
     <div class="form-field-label full-border">
         <label style="margin-right:20px">ЕГН:</label><span class="text-value" th:text="${clientPin}"></span>
     </div>
     <div class="form-field-label full-border">
-        <label style="margin-right:20px">Представител на (име на фирма)</label><span class="text-value" th:text="${companyName}"></span>
+        <label style="margin-right:20px">Представител на (име на фирма)</label><span class="text-value" th:text="${companyName}">NA</span>
     </div>
     <div class="form-field-label full-border">
-        <label style="margin-right:20px">Пълномощно №/дата:</label><span class="text-value" th:text="${attorneyNumber} + '/' +${attorneyDate}"></span>
+        <label style="margin-right:20px">Пълномощно №/дата</label><span class="text-value">NA</span>
     </div>
     <div class="form-field-label full-border">
-        <label style="margin-right:20px">Основание:</label><span class="text-value" th:text="${reasonPayment}"></span>
+        <label style="margin-right:20px">Основание:</label><span class="text-value"></span>
     </div>
     <div class="row full-border" style="height:100px">
         <div class="column">
             <div class="text-container"><label class="heading">Усвоен к-т №: </label><span th:text="${loanId} + '/' +${loanCreationDate}"></span></div>
         </div>
-        <div class="column">
+        <div class="column2">
             <div class="text-container"><label class="heading">Каса София The Mall: </label><span th:text="${branchName}"></span></div>
         </div>
     </div>
-    <div class="row full-border" style="height:100px">
-        <div class="column">
+    <div class="row full-border">
+        <div class="column1" style="width:20%;background: lightgray;">
             <div class="text-container"><label class="heading">Сумата</label></div>
+        </div>
+        <div class="column2">
+            <div class="text-container"><label class="heading"></label></div>
         </div>
     </div>
     <div class="form-field-label full-border">
         <label style="margin-right:20px">Цифром:</label><span class="text-value" th:text="${principalAmount}"></span><label style="margin-left:20px">лв.</label>
     </div>
     <div class="form-field-label full-border">
-        <label style="margin-right:20px">Словом:</label><span class="text-value" th:text="${loanAmountInWords}"></span>
+        <label style="margin-right:20px">Словом:</label><span class="text-value" th:text="${amountInWords}"></span>
     </div>
-    <div class="row full-border" style="height:100px">
+    <div class="row full-border">
         <div class="column">
             <div class="text-container"><label class="heading">Съставил:</label></div>
         </div>
@@ -168,17 +207,17 @@
             <div class="text-container"><label class="heading">Получил сумата:</label></div>
         </div>
     </div>
-    <div class="row full-border" style="height:100px">
-        <div class="column">
-            <div class="text-container"><label class="heading text-value"></label></div>
+    <div class="row full-border">
+        <div class="column3" style="padding-top:63px;border-right: 1px solid black">
+            <div class="text-container"><label class="heading">-------------------------</label></div>
             <div class="text-container"><label class="sub-heading">/Подпис/</label></div>
         </div>
-        <div class="column">
-            <div class="text-container"><label class="heading text-value"></label></div>
+        <div class="column3" style="padding-top:63px;border-right: 1px solid black">
+            <div class="text-container"><label class="heading">-------------------------</label></div>
             <div class="text-container"><label class="sub-heading">/Подпис/</label></div>
         </div>
-        <div class="column">
-            <div class="text-container"><label class="heading text-value"></label></div>
+        <div class="column3" style="padding-top:63px;">
+            <div class="text-container"><label class="heading">-------------------------</label></div>
             <div class="text-container"><label class="sub-heading">/Подпис/</label></div>
         </div>
     </div>

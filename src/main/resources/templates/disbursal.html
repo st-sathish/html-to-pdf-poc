@@ -125,6 +125,12 @@
           padding: 10px;
           height:100%;
         }
+        img {
+              max-width: 100%;
+              height: auto;
+              display: block;
+              margin-left: 65%;
+            }
     </style>
 </head>
 <body>
@@ -139,8 +145,9 @@
             <div class="text-container"><label class="sub-heading">206613478</label></div>
         </div>
         <div class="column1">
-            <div class="text-container"><img th:src="@{src/main/resource/templates/mp_logo.png}" style="width: 150px"></div>
-            <div class="text-container"><label class="sub-heading">Дата:</label>&nbsp;
+<!--            <div class="text-container"><img th:src="@{src/main/resource/templates/mp_logo.png}" style="width: 150px"></div>-->
+            <div class="text-container"><img src="mp_logo.png" width="130" height="30"> </div>
+            <div class="text-container"><label class="sub-heading" style="margin-right: 73%;">Дата:</label>&nbsp;
                 &nbsp;&nbsp;&nbsp;&nbsp;<span th:text="${todayDate}"></span></div>
         </div>
     </div>

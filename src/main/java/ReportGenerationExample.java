@@ -13,8 +13,8 @@ import java.util.Map;
 public class ReportGenerationExample {
 
     public static void main(String[] args) throws IOException {
-        //final String filePath = "";
-        final String filePath = "/home/daypay/workspace/intellij/mp-report-poc/reports/tax-recipt.html";
+        final String filePath = "/home/linux/workspace/intellij/mp-report-poc/reports/tax-recipt.html";
+        //final String filePath = "/home/daypay/workspace/intellij/mp-report-poc/reports/tax-recipt.html";
 //        HtmlConverter.convertToPdf(
 //                new File(filePath),
 //                new File("demo-html.pdf"));

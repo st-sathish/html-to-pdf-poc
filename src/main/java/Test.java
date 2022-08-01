@@ -37,7 +37,7 @@ public class Test {
         data.put("attorneyDate", "Infosyss");
         data.put("reasonPayment", "Infosyss");
         data.put("loanId", "Infosyss");
-        data.put("loanCreationDate", "22-06-2022");
+        data.put("todayDate", "22-06-2022");
         data.put("principalAmount", "60000");
         data.put("loanAmountInWords", "Infosyss");
         Context context = new Context();
